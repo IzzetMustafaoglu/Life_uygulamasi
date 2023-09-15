@@ -26,10 +26,57 @@ class _MyHomePageState extends State<InputPage> {
         ),
         centerTitle: true,
       ),
-      body: Container(
-        width: 150,
-        height: 150,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              children: <Widget>[
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.all(12.0),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
+                ),
+              ),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(12.0),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
+                  ),
+                ),
+              ]
+            ),
+          ),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.all(12.0),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.all(12.0),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
+            ),
+          ),
+          Expanded(
+            child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.all(12.0),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.all(12.0),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
+                    ),
+                  ),
+                ]
+            ),
+          ),
+        ],
       )
     );
   }
