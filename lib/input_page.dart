@@ -32,16 +32,10 @@ class _MyHomePageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
               Expanded(
-                child: Container(
-                  margin: EdgeInsets.all(12.0),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
-                ),
+                child: MyContainer(renk: Colors.black26),
               ),
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(12.0),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
-                  ),
+                  child: MyContainer(renk: Colors.purple)
                 ),
               ]
             ),
@@ -62,22 +56,30 @@ class _MyHomePageState extends State<InputPage> {
             child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(12.0),
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
-                    ),
+                    child: MyContainer()
                   ),
                   Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(12.0),
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
-                    ),
+                    child: MyContainer()
                   ),
                 ]
             ),
           ),
         ],
       )
+    );
+  }
+}
+
+class MyContainer extends StatelessWidget {
+  Color renk = Colors.white;
+  MyContainer({this.renk = Colors.white}){
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(12.0),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: renk,),
     );
   }
 }
