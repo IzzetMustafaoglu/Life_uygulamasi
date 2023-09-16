@@ -32,10 +32,22 @@ class _MyHomePageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
               Expanded(
-                child: MyContainer(renk: Colors.black26),
+                child: MyContainer(child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.vaccines,
+                    )
+                  ],
+                ),),
               ),
                 Expanded(
-                  child: MyContainer(renk: Colors.purple)
+                  child: MyContainer(child: Column(
+                    children: <Widget>[
+                      Icon(
+                        Icons.vaccines,
+                      )
+                    ],
+                  ),)
                 ),
               ]
             ),
@@ -56,28 +68,54 @@ class _MyHomePageState extends State<InputPage> {
             child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: MyContainer()
-                  ),
+                    child: MyContainer(child: IconCinsiyet(
+                      icon: Icon(Icons.man,size: 50, color: Colors.black54),
+                      cinsiyet: "Erkek",
+                    ),),
+                   ),
                   Expanded(
-                    child: MyContainer()
+                      child: MyContainer(child: IconCinsiyet(
+                          icon: Icon(Icons.woman,size: 50, color: Colors.black54,),
+                          cinsiyet: "Kadın"),)
                   ),
+                      ],
+                    ),
+                    ),
                 ]
             ),
-          ),
-        ],
-      )
+          );
+
+    }
+}
+
+class IconCinsiyet extends StatelessWidget {
+  final Icon icon;
+  final String cinsiyet;
+  IconCinsiyet({required this.icon, required this.cinsiyet});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        icon,
+        SizedBox(height: 10,),
+        Text(cinsiyet,style: TextStyle(color: Colors.black54,fontSize: 20,fontWeight: FontWeight.bold),)
+      ],
     );
   }
 }
 
 class MyContainer extends StatelessWidget {
   Color renk = Colors.white;
-  MyContainer({this.renk = Colors.white}){
-  }
+  Widget child = Icon(Icons.add);
+
+  MyContainer({this.renk = Colors.white, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: child,
       margin: EdgeInsets.all(12.0),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: renk,),
     );
