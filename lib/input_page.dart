@@ -10,6 +10,8 @@ class InputPage extends StatefulWidget {
 
 class _MyHomePageState extends State<InputPage> {
   int _counter = 0;
+  late bool seciliCinsiyet;
+  double icilenSigara=3;
 
   void _incrementCounter() {
     setState(() {
@@ -28,12 +30,19 @@ class _MyHomePageState extends State<InputPage> {
         centerTitle: true,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             child: Row(
               children: <Widget>[
               Expanded(
-                child: MyContainer(child: Column(
+                child: MyContainer(
+                  onPress: (){
+                    setState(() {
+                      print("....");
+                    });
+                  },
+                  child: Column(
                   children: <Widget>[
                     Icon(
                       Icons.vaccines,
@@ -42,7 +51,13 @@ class _MyHomePageState extends State<InputPage> {
                 ),),
               ),
                 Expanded(
-                  child: MyContainer(child: Column(
+                  child: MyContainer(
+                    onPress: (){
+                      setState(() {
+                        print("......");
+                      });
+                    },
+                    child: Column(
                     children: <Widget>[
                       Icon(
                         Icons.vaccines,
@@ -61,6 +76,28 @@ class _MyHomePageState extends State<InputPage> {
           ),
           Expanded(
             child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Günde Kaç Sigara İçiyorsunuz?",
+                    style: TextStyle(color: Colors.black54,fontSize: 20,fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    icilenSigara.round().toString(),
+                    style: TextStyle(color: Colors.lightBlue,fontSize: 35,fontWeight: FontWeight.bold),),
+                  Slider(
+                      min: 0,
+                      max: 30,
+                      value: icilenSigara,
+                      onChanged: (double newValue){
+                        setState(() {
+                          icilenSigara = newValue;
+                        });
+                      }
+                  ),
+                ],
+              ),
               margin: EdgeInsets.all(12.0),
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: Colors.white,),
             ),
@@ -69,15 +106,28 @@ class _MyHomePageState extends State<InputPage> {
             child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: MyContainer(child: IconCinsiyet(
+                    child: MyContainer(
+                      onPress: (){
+                        setState(() {
+                          print("Erkek");
+                        });
+                      },
+                      child: IconCinsiyet(
                       icon: Icon(Icons.man,size: 50, color: Colors.black54),
                       cinsiyet: "Erkek",
                     ),),
                    ),
                   Expanded(
-                      child: MyContainer(child: IconCinsiyet(
+                      child: MyContainer(
+                        onPress: (){
+                          setState(() {
+                            print("kadın");
+                          });
+                        },
+                        child: IconCinsiyet(
                           icon: Icon(Icons.woman,size: 50, color: Colors.black54,),
-                          cinsiyet: "Kadın"),)
+                          cinsiyet: "Kadın"),
+                      )
                   ),
                       ],
                     ),
@@ -88,3 +138,4 @@ class _MyHomePageState extends State<InputPage> {
 
     }
 }
+
