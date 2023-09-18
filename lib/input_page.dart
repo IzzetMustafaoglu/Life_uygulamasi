@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:life_expectancy_v1/constants.dart';
 import './icon_cinsiyet.dart';
 import './my_container.dart';
 
@@ -13,6 +14,7 @@ class _MyHomePageState extends State<InputPage> {
   late bool seciliCinsiyet;
   double icilenSigara=3;
   double sporGunu = 2;
+  int boy = 170;
 
   void _incrementCounter() {
     setState(() {
@@ -36,21 +38,57 @@ class _MyHomePageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: <Widget>[
-              Expanded(
-                child: MyContainer(
-                  onPress: (){
-                    setState(() {
-                      print("....");
-                    });
-                  },
-                  child: Column(
-                  children: <Widget>[
-                    Icon(
-                      Icons.vaccines,
-                    )
-                  ],
-                ),),
-              ),
+                Expanded(
+                  child: MyContainer(
+                    onPress: (){
+                      setState(() {
+                        print("......");
+                      });
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        RotatedBox(
+                            quarterTurns:-1,
+                            child: Text("BOY")
+                        ),
+
+                        RotatedBox(
+                            quarterTurns:-1,
+                            child: Text(
+                              boy.toString(),
+                              style: sayiStil,
+                            )
+                        ),
+                        SizedBox(width: 10,),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ButtonTheme(
+                              minWidth: 36,
+                              child: OutlinedButton(
+                                  onPressed: (){
+                                    print("üstteki buton basıldı");
+                                  },
+                                  child: Icon(Icons.plus_one,size: 30,color: Colors.green),
+                              ),
+                            ),
+                            SizedBox(width: 10,),
+                            ButtonTheme(
+                              minWidth: 36,
+                              child: OutlinedButton(
+                                  onPressed: (){
+                                    print("Alttaki buton basıldı");
+                                  },
+                                  child: Icon(Icons.exposure_minus_1_sharp,size: 25,color: Colors.red,),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
                 Expanded(
                   child: MyContainer(
                     onPress: (){
@@ -76,7 +114,7 @@ class _MyHomePageState extends State<InputPage> {
                 children: [
                   Text(
                     "Haftada kaç gün spor yapıyorsunuz?",
-                    style: TextStyle(color: Colors.black54,fontSize: 20,fontWeight: FontWeight.bold),
+                    style: kMetinStil
                   ),
                   Text(
                     sporGunu.round().toString(),
@@ -105,11 +143,12 @@ class _MyHomePageState extends State<InputPage> {
                 children: [
                   Text(
                     "Günde Kaç Sigara İçiyorsunuz?",
-                    style: TextStyle(color: Colors.black54,fontSize: 20,fontWeight: FontWeight.bold),
+                    style: kMetinStil
                   ),
                   Text(
                     icilenSigara.round().toString(),
-                    style: TextStyle(color: Colors.lightBlue,fontSize: 35,fontWeight: FontWeight.bold),),
+                    style: sayiStil
+                  ),
                   Slider(
                       min: 0,
                       max: 30,
@@ -162,4 +201,3 @@ class _MyHomePageState extends State<InputPage> {
 
     }
 }
-

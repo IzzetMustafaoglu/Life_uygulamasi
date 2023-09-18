@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:life_expectancy_v1/constants.dart';
 import './input_page.dart';
 
 class IconCinsiyet extends StatelessWidget {
@@ -13,7 +14,7 @@ class IconCinsiyet extends StatelessWidget {
       children: <Widget>[
         icon,
         SizedBox(height: 10,),
-        Text(cinsiyet,style: TextStyle(color: Colors.black54,fontSize: 20,fontWeight: FontWeight.bold),)
+        Text(cinsiyet,style: kMetinStil)
       ],
     );
   }
