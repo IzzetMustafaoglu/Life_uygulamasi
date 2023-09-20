@@ -15,6 +15,7 @@ class _MyHomePageState extends State<InputPage> {
   double icilenSigara=3;
   double sporGunu = 2;
   int boy = 170;
+  int kilo = 65;
 
   void _incrementCounter() {
     setState(() {
@@ -68,6 +69,11 @@ class _MyHomePageState extends State<InputPage> {
                               minWidth: 36,
                               child: OutlinedButton(
                                   onPressed: (){
+
+                                    setState(() {
+                                      boy++;
+                                    });
+
                                     print("üstteki buton basıldı");
                                   },
                                   child: Icon(Icons.plus_one,size: 30,color: Colors.green),
@@ -78,6 +84,11 @@ class _MyHomePageState extends State<InputPage> {
                               minWidth: 36,
                               child: OutlinedButton(
                                   onPressed: (){
+
+                                    setState(() {
+                                      boy--;
+                                    });
+
                                     print("Alttaki buton basıldı");
                                   },
                                   child: Icon(Icons.exposure_minus_1_sharp,size: 25,color: Colors.red,),
@@ -96,13 +107,59 @@ class _MyHomePageState extends State<InputPage> {
                         print("......");
                       });
                     },
-                    child: Column(
-                    children: <Widget>[
-                      Icon(
-                        Icons.vaccines,
-                      )
-                    ],
-                  ),)
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        RotatedBox(
+                            quarterTurns:-1,
+                            child: Text("KİLO")
+                        ),
+
+                        RotatedBox(
+                            quarterTurns:-1,
+                            child: Text(
+                              kilo.toString(),
+                              style: sayiStil,
+                            )
+                        ),
+                        SizedBox(width: 10,),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ButtonTheme(
+                              minWidth: 36,
+                              child: OutlinedButton(
+                                onPressed: (){
+
+                                  setState(() {
+                                    kilo++;
+                                  });
+
+                                  print("üstteki buton basıldı");
+                                },
+                                child: Icon(Icons.plus_one,size: 30,color: Colors.green),
+                              ),
+                            ),
+                            SizedBox(width: 10,),
+                            ButtonTheme(
+                              minWidth: 36,
+                              child: OutlinedButton(
+                                onPressed: (){
+
+                                  setState(() {
+                                    kilo--;
+                                  });
+
+                                  print("Alttaki buton basıldı");
+                                },
+                                child: Icon(Icons.exposure_minus_1_sharp,size: 25,color: Colors.red,),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ]
             ),
