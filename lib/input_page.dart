@@ -46,58 +46,7 @@ class _MyHomePageState extends State<InputPage> {
                         print("......");
                       });
                     },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        RotatedBox(
-                            quarterTurns:-1,
-                            child: Text("BOY")
-                        ),
-
-                        RotatedBox(
-                            quarterTurns:-1,
-                            child: Text(
-                              boy.toString(),
-                              style: sayiStil,
-                            )
-                        ),
-                        SizedBox(width: 10,),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ButtonTheme(
-                              minWidth: 36,
-                              child: OutlinedButton(
-                                  onPressed: (){
-
-                                    setState(() {
-                                      boy++;
-                                    });
-
-                                    print("üstteki buton basıldı");
-                                  },
-                                  child: Icon(Icons.plus_one,size: 30,color: Colors.green),
-                              ),
-                            ),
-                            SizedBox(width: 10,),
-                            ButtonTheme(
-                              minWidth: 36,
-                              child: OutlinedButton(
-                                  onPressed: (){
-
-                                    setState(() {
-                                      boy--;
-                                    });
-
-                                    print("Alttaki buton basıldı");
-                                  },
-                                  child: Icon(Icons.exposure_minus_1_sharp,size: 25,color: Colors.red,),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
+                    child:  buildRowOutlineButton("BOY"),
                   ),
                 ),
                 Expanded(
@@ -107,58 +56,7 @@ class _MyHomePageState extends State<InputPage> {
                         print("......");
                       });
                     },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        RotatedBox(
-                            quarterTurns:-1,
-                            child: Text("KİLO")
-                        ),
-
-                        RotatedBox(
-                            quarterTurns:-1,
-                            child: Text(
-                              kilo.toString(),
-                              style: sayiStil,
-                            )
-                        ),
-                        SizedBox(width: 10,),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ButtonTheme(
-                              minWidth: 36,
-                              child: OutlinedButton(
-                                onPressed: (){
-
-                                  setState(() {
-                                    kilo++;
-                                  });
-
-                                  print("üstteki buton basıldı");
-                                },
-                                child: Icon(Icons.plus_one,size: 30,color: Colors.green),
-                              ),
-                            ),
-                            SizedBox(width: 10,),
-                            ButtonTheme(
-                              minWidth: 36,
-                              child: OutlinedButton(
-                                onPressed: (){
-
-                                  setState(() {
-                                    kilo--;
-                                  });
-
-                                  print("Alttaki buton basıldı");
-                                },
-                                child: Icon(Icons.exposure_minus_1_sharp,size: 25,color: Colors.red,),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
+                    child: buildRowOutlineButton("KİLO"),
                   ),
                 ),
               ]
@@ -257,4 +155,60 @@ class _MyHomePageState extends State<InputPage> {
           );
 
     }
+
+  Row buildRowOutlineButton(String label) {
+    return Row(
+
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RotatedBox(
+                          quarterTurns:-1,
+                          child: Text(label)
+                      ),
+
+                      RotatedBox(
+                          quarterTurns:-1,
+                          child: Text(
+                            label=="BOY" ? boy.toString() : kilo.toString(),
+                            style: sayiStil,
+                          )
+                      ),
+                      SizedBox(width: 10,),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ButtonTheme(
+                            minWidth: 36,
+                            child: OutlinedButton(
+                                onPressed: (){
+
+                                  setState(() {
+                                    label=="BOY" ? boy++ : kilo++;
+                                  });
+
+                                  print("üstteki buton basıldı");
+                                },
+                                child: Icon(Icons.plus_one,size: 30,color: Colors.green),
+                            ),
+                          ),
+                          SizedBox(width: 10,),
+                          ButtonTheme(
+                            minWidth: 36,
+                            child: OutlinedButton(
+                                onPressed: (){
+
+                                  setState(() {
+                                    label=="BOY" ? boy-- : kilo--;
+                                  });
+
+                                  print("Alttaki buton basıldı");
+                                },
+                                child: Icon(Icons.exposure_minus_1_sharp,size: 25,color: Colors.red,),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  );
+  }
 }
