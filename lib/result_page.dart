@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:life_expectancy_v1/constants.dart';
 import 'package:life_expectancy_v1/user_data.dart';
+import 'hesap.dart';
 
 class ResultPage extends StatelessWidget {
   final UserData _userData;
@@ -20,7 +21,7 @@ class ResultPage extends StatelessWidget {
               flex: 8,
               child: Center(
                   child: Text(
-                      _userData.seciliCinsiyet.toString(),
+                      Hesap(_userData).hesaplama().toString(),
                       style: kMetinStil
                   ))),
           Expanded(
