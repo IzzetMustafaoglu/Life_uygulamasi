@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:life_expectancy_v1/constants.dart';
+import 'package:life_expectancy_v1/result_page.dart';
+import 'package:life_expectancy_v1/user_data.dart';
 import './icon_cinsiyet.dart';
 import './my_container.dart';
 
@@ -11,7 +13,7 @@ class InputPage extends StatefulWidget {
 
 class _MyHomePageState extends State<InputPage> {
   int _counter = 0;
-  late bool seciliCinsiyet;
+  bool seciliCinsiyet = false;
   double icilenSigara=3;
   double sporGunu = 2;
   int boy = 170;
@@ -150,6 +152,23 @@ class _MyHomePageState extends State<InputPage> {
                       ],
                     ),
                     ),
+          ButtonTheme(
+            height: 50,
+            child: TextButton(
+                onPressed: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>ResultPage(
+                        UserData(kilo:kilo,boy:boy,seciliCinsiyet:seciliCinsiyet,sporGunu:sporGunu,icilenSigara:icilenSigara)
+
+
+                      )));
+                },
+                child:
+                Text(
+                  "HESAPLA",
+                  style: kMetinStil,
+                )),
+          )
                 ]
             ),
           );
